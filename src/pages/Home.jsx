@@ -1,38 +1,29 @@
 import { useState } from "react";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, deleteTodo, updateTodoStatus } from "./redux/slices/todosSlices";
-import { toast } from "react-toastify"
+import { addTodo, deleteTodo, updateTodoStatus } from "../redux/slices/todosSlices";
 
-function App() {
+function Home() {
   const todos = useSelector((state) => state.todos.todos)
   const dispatch = useDispatch()
 
   const [newTodo, setNewTodo] = useState("");
 
-  const getTodosDone = () => {
-    return todos.filter((todo) => {
-      return todo.isDone
-    })
-  }
 
   const handleDelete = (idx) => {
     dispatch(deleteTodo(idx))
-    toast.success("delete todo sucess")
   };
 
   const handleisDone = (index, value) => {
     dispatch(updateTodoStatus({index, isDone: value}))
-    toast.success("update todo sucess")
   };
 
   const handleAddTodo = () => {
     if (!newTodo) {
       return alert("No todos for Today!");
     }
-    dispatch(addTodo({title: newTodo, isDone: false}))
+    dispatch(addTodo({title, isDone: false}))
     setNewTodo("");
-    toast.success("create new todo sucess")
   };
 
   return (
@@ -95,4 +86,4 @@ function App() {
   );
 }
 
-export default App
+export default Home
