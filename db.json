@@ -1,34 +1,3 @@
 {
-  "todos": [
-    {
-      "title": "Create Guest Experience mobile check-in",
-      "isDone": false,
-      "id": 1
-    },
-    {
-      "title": "Document current CI/CD process",
-      "isDone": false,
-      "id": 2
-    },
-    {
-      "title": "Perform Code Review for final Pillow-Talk release",
-      "isDone": false,
-      "id": 3
-    },
-    {
-      "title": "Implement new Color Palette from Design Team",
-      "isDone": false,
-      "id": 4
-    },
-    {
-      "title": "Fix image uploading process for guest check-in",
-      "isDone": false,
-      "id": 5
-    },
-    {
-      "title": "Provide on boarding documentation",
-      "isDone": false,
-      "id": 6
-    }
-  ]
+  "todos": []
 }
