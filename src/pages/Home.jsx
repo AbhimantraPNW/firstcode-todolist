@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, deleteTodo, updateTodoStatus } from "../redux/slices/todosSlices";
+import {
+  addTodo,
+  deleteTodo,
+  updateTodoStatus,
+} from "../redux/slices/todosSlices";
+import axios from "axios";
 
 function Home() {
   const todos = useSelector((state) => state.todos.todos)
   const dispatch = useDispatch()
 
-  const [newTodo, setNewTodo] = useState("");
-
+  const [newTodo, setNewTodo] = useState("")
 
   const handleDelete = (idx) => {
     dispatch(deleteTodo(idx))
@@ -25,6 +29,7 @@ function Home() {
     dispatch(addTodo({title, isDone: false}))
     setNewTodo("");
   };
+
 
   return (
     <div className="bg-slate-800 min-h-screen w-screen">
@@ -86,4 +91,4 @@ function Home() {
   );
 }
 
-export default Home
+export default Home;
