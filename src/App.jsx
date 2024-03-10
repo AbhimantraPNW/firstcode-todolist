@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
 import { BsFillTrash3Fill } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addTodo,
-  deleteTodo,
-  updateTodoStatus,
-} from "./redux/slices/todosSlices";
-import { toast } from "react-toastify";
 import axios from "axios";
 
 function App() {
@@ -29,8 +22,7 @@ function App() {
         isDone: false,
       });
       const response = await axios.get("http://localhost:3000/todos");
-      const updatedTodos = response.data;
-      setTodos(updatedTodos);
+      setTodos(response.data);
       setNewTodo("");
     } catch (error) {
       console.log(error);
@@ -49,16 +41,14 @@ function App() {
   const getDoneTodos = async (index, isChecked) => {
     try {
       const updatedTodosDone = todos.map((todo, i) => {
-      return i === index ? { ...todo, isDone: isChecked } : todo;
+        return i === index ? { ...todo, isDone: isChecked } : todo;
       });
       setTodos(updatedTodosDone);
-      
       if (isChecked) {
-            const todoUpdate = updatedTodosDone[index]
-            await axios.patch(`http://localhost:3000/todos/${todoUpdate.id}`, {
-            isDone: true,
+        const todoUpdate = updatedTodosDone[index];
+        await axios.patch(`http://localhost:3000/todos/${todoUpdate.id}`, {
+          isDone: true,
         });
-        setTodos(done.data);
       }
     } catch (error) {
       console.log(error);
